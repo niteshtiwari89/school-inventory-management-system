@@ -1,6 +1,6 @@
 // import { Component } from "react";
 // import { Nav, NavItem, NavLink } from "reactstrap";
-import "./css/navbar.css";
+import "../css/navbar.css";
 import { Link } from "react-router-dom";
 // import school from "./School";
 import LogoutIcon from "@mui/icons-material/Logout";
