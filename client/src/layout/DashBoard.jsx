@@ -86,7 +86,7 @@ export default function DashBoard() {
                 </div> */}
 
       <div className="myclass">
-        <div className="myclassheading"><h2>Dashboard</h2></div>
+        <div className="myclassheading">DashBoard</div>
         
         <ul className="list-none class-list">
           <li>
