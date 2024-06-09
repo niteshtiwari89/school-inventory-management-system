@@ -86,7 +86,8 @@ export default function DashBoard() {
                 </div> */}
 
       <div className="myclass">
-        <h2>Dashboard</h2>
+        <div className="myclassheading"><h2>Dashboard</h2></div>
+        
         <ul className="list-none class-list">
           <li>
             <Link to="/">
