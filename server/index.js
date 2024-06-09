@@ -24,9 +24,35 @@ app.use(express.json());
 //   })
 // })
 
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = "mongodb+srv://tiwarinitesh667:nitesh6671@database.fwbkdld.mongodb.net/?retryWrites=true&w=majority&appName=Database";
+
+// Create a MongoClient with a MongoClientOptions object to set the Stable API version
+const client = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  }
+});
+
+async function run() {
+  try {
+    // Connect the client to the server	(optional starting in v4.7)
+    await client.connect();
+    // Send a ping to confirm a successful connection
+    await client.db("admin").command({ ping: 1 });
+    console.log("Pinged your deployment. You successfully connected to MongoDB!");
+  } finally {
+    // Ensures that the client will close when you finish/error
+    await client.close();
+  }
+}
+run().catch(console.dir);
+
 // MongoDB Connection
-mongoose.connect('mongodb://localhost:27017/sample').then(() => console.log('Connected to MongoDB'))
-  .catch(err => console.error('MongoDB connection error:', err));
+// mongoose.connect('mongodb://localhost:27017/sample').then(() => console.log('Connected to MongoDB'))
+//   .catch(err => console.error('MongoDB connection error:', err));
 
 // CRUD Routes
 app.post('/labs_items', async (req, res) => {
