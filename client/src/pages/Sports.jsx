@@ -462,7 +462,7 @@ const Sports = () => {
           <DialogActions>
             <Button
               variant="contained"
-              color="success"  ,.m,.
+              color="success"
               sx={{ margin: "0.6rem" }}
               onClick={() => {
                 if (editingData) {
