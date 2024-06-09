@@ -35,7 +35,10 @@
   /* background-color: aquamarine; */
   /* border-bottom: 1px solid; */
 }
-
+.headingtitle{
+  font-size: x-large;
+    font-weight: 500;
+}
 .heading>img {
   width: auto;
   height: 3rem;}

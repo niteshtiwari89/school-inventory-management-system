@@ -8,7 +8,7 @@ export class Header extends Component {
       <>
         <div className="heading">
           <img src={inventory} alt="" />
-          <h1>School Inventory Management System(SIMS)</h1>
+          <div className="headingtitle">School Inventory Management System(SIMS)</div>
         </div>
       </>
     );
