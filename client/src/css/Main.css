@@ -1,0 +1,25 @@
+.appcontainer{
+    display: flex;
+    width: auto;
+    height: 100vh;
+}
+.dashboard{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid;
+    position: relative;
+    width: 18%;
+}
+.content{
+    width: 82%;
+    /* height: 100vh; */
+}
+.com-content{
+    top: 100px;
+    display: flex;
+    position: relative;
+}
+.heading{
+    display: flex;
+    position: fixed;
+}

@@ -1,0 +1,93 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* .container {
+  width: 100vw;
+} */
+.list-main {
+  width: 100%;
+  background-color: rgb(244, 246, 252);
+}
+#root {
+  width: 100%;
+
+  /* overflow-x: hidden; */
+  /* background-color:#F4EDED; */
+  /* background-image: linear-gradient(to right bottom, #14386d, #005e91, #0084af, #13acc7, #53d4da); */
+  /* background-image: linear-gradient(to right bottom, #018bbb, #009dc5, #1bb0ce, #37c2d5, #53d4da); */
+  /* background-color: rgb(248, 248, 248); */
+  /* background-color: rgb(244, 246, 252); */
+  background-color: rgb(248, 248, 248);
+  height: auto;
+}
+.heading {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  border-bottom: 1px solid cadetblue;
+  opacity: 1;
+  position: sticky;
+  height: 4rem;
+  /* background-color: aquamarine; */
+  /* border-bottom: 1px solid; */
+}
+
+.heading>img {
+  width: auto;
+  height: 3rem;}
+a {
+  color: white;
+}
+.color{
+  /* background-color: rgb(244, 246, 252); */
+  height: 100vh;
+  /* position: fixed;
+  left: 17%; */
+}
+.contain{
+  display: flex;
+  /* position: fixed; */
+}
+
+
+
+.appcontainer{
+  display: flex;
+  /* background-color: black; */
+  /* color: wheat; */
+  height: 100vh;
+  /* width: 100vw; */
+  background-color: rgb(244, 246, 252);
+}
+.containerDash{
+  width: 15%;
+}
+/* .containerDash>ul{
+  display: flex;
+  flex-direction: column;
+}
+.containerDash>ul>li{
+  display: flex;
+} */
+.containerContent{
+  display: flex;
+  width: 85%;
+  flex-direction: column;
+}
+.containerHead{
+  display: flex;
+  /* width: w; */
+}
+.containerContentHead{
+  display: block;
+  height: 90vh;
+}
+
+
+.login{
+  height: 100vh;
+}

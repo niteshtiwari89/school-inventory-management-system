@@ -1,0 +1,133 @@
+/* *{
+    background-color: aqua;
+} */
+.navigation,.myclass,.logout {
+    /* padding-left: 1vh; */
+    /* background-color: #114B5F; */
+    background-color: rgb(248, 248, 248);
+    /* background-color: rgb(107 114 128); */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    border-right:1px solid;  
+    position:relative;
+    width: 100%;
+
+}
+.navigation{
+    display: flex;
+    flex-direction: column;
+}
+.class-list{
+    display: flex;
+    flex-direction: column;
+}
+.class-list>li{
+    gap:2; 
+}
+
+
+/* .navigation , */
+.myclass>h2 {
+    /* color: #E4FDE1; */
+    border-bottom: 1px solid cadetblue;
+    padding:1rem;
+    height: 4rem;
+    text-align: center;
+}
+
+.href {
+    color: #E4FDE1;
+}
+/* .myclass{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-around; */
+/* } */ */
+.text-link {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.nav-link>a {
+    text-decoration: none;
+}
+
+.product-event>button {
+    background-color: rgb(242, 239, 239);
+    border: none;
+    font-weight: 500;
+}
+.class-list>li{
+    gap: 2;
+}
+.class-list{
+    margin: 10px;
+    margin-left: 10px;
+    padding: 0;
+    height: auto;
+}
+.class-list>li{
+    padding: 15px;
+    margin: 8px;
+    list-style: none;
+    border-radius: 10px;
+    background-color: rgb(242, 239, 239);
+}
+.class-list>li>a{
+    color: black;
+    /* padding: 10px; */
+    border: none;
+    text-decoration: none;
+    /* display: block; */
+    /* background-color: rgb(242, 239, 239); */
+    transition: all 2s ease;
+}
+.class-list>li>a>button{
+    border: none;
+    width: 100%;
+    display: flex;
+    /* background-color: rgb(242, 239, 239); */
+    transition: all 2s ease;
+}
+.class-list>li>a>button:hover{
+    color: rgb(74 222 128);
+    transition: all 0.6s ease;
+}
+.class-list>li>a>button{
+    font-size:medium;
+    font-weight:600;
+}
+
+/* .myclass {
+    background-color: #059669;
+    height: 100vh;
+    width: auto;
+} */
+
+/* .myclass>h2 {
+    color: white;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    border-bottom: 1px solid;
+} */
+
+/* li {
+    padding-left: 1vw;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+} */
+
+.logout{
+    display: flex;
+    /* align-items: end; */
+    justify-content: center;
+    flex-direction: column;
+    border: none;
+    /* position:fixed; */
+}
+.icond{
+    display: flex;
+    justify-content: center;
+}

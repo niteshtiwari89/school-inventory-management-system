@@ -1,0 +1,33 @@
+.container-dash{
+    /* border: 10px solid; */
+    padding: 1vw;
+    width: 100%;
+}
+.product-event{
+    display: flex;
+    justify-content: space-between;
+}
+.product-event>button{
+    padding: 10px;
+    border-radius: 10px;
+    margin: 1vw;
+}
+.product-event>button>a{
+    text-decoration: none;
+    color: black;
+}
+#list{
+    width: 100%;
+    border: 1px solid;
+}
+#list tr{
+    border: 1px solid;
+}
+#list th{
+    padding: 20px;
+    border: 1px solid;
+}
+#list td{
+    padding: 20px;
+    border: 1px solid;
+}
