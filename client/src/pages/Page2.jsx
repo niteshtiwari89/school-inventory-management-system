@@ -114,7 +114,7 @@ function Page2() {
               </div>
             </div>
             <div className="item-link">
-              <Link to="/sports">
+              <Link to="/school">
               <button>Go To School</button>
               </Link>
             </div>
@@ -136,7 +136,7 @@ function Page2() {
               </div>
             </div>
             <div className="item-link">
-              <Link to="/school">
+              <Link to="/sports">
               <button>Go To Sports</button>
               </Link>
             </div>
