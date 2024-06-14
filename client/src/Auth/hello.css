@@ -1,0 +1,8 @@
+/* customMessageStyles.css */
+.custom-success-message .ant-message-notice-content {
+  text-align: center;
+  background-color: #eaffea; /* Example background color */
+  color: #008000; /* Example text color */
+  border-radius: 5px; /* Example border radius */
+  padding: 10px; /* Example padding */
+}

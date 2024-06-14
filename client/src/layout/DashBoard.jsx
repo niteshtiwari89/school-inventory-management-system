@@ -7,7 +7,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 // import { useState } from "react";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 // import { AuthContext } from "../AuthContext";
-
+import {useAuth} from '../contexts/AuthContext';
 // export default function DashBoard({onButtonClick})
 export default function DashBoard() {
   // const [user, setUser] = useState({ userName: "" });
@@ -16,7 +16,7 @@ export default function DashBoard() {
   //   setUser({ userName: "" });
   //   setIsLoggedIn(false);
   // };
-
+  const {logout} = useAuth();
   // const {onButtonClick} = props
   return (
     <>
@@ -139,6 +139,7 @@ export default function DashBoard() {
           //   console.log("hello");
           // }}
           // onClick={onButtonClick}
+          onClick={logout}
         >
           <LogoutIcon />
           Logout
