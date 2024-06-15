@@ -1,6 +1,7 @@
 import { message } from "antd";
 import { useState } from "react";
 import {useAuth}  from '../contexts/AuthContext';
+import api from "../connection";
 // import "../Auth/hello.css"
 
 const useLogin = () => {
@@ -12,7 +13,7 @@ const loginUser =async(values) =>{
     try{
         setError(null);
         setLoading(true);
-        const res = await fetch('https://school-inventory-management-system-oujy.vercel.app/api/auth/login',{
+        const res = await api.get('https://school-inventory-management-system-oujy.vercel.app/api/auth/login',{
             method:'POST',
             headers:{
                 'Content-Type':'application/json'

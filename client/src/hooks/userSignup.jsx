@@ -2,6 +2,7 @@ import axios from 'axios';
 import { message } from 'antd';
 import { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext.jsx';
+import api from '../connection.jsx';
 
 const userSignup = () => {
   const { login } = useAuth();
@@ -20,7 +21,7 @@ const userSignup = () => {
       // Log the values being sent to the API
       console.log("Sending values to API:", values);
 
-      const res = await axios.post('https://school-inventory-management-system-oujy.vercel.app/api/auth/signup', values, {
+      const res = await api.post('https://school-inventory-management-system-oujy.vercel.app/api/auth/signup', values, {
         headers: {
           'Content-Type': 'application/json',
         },
