@@ -296,15 +296,25 @@ const User =require('./models/userModel');
 
 //MIddleware
 
+// const corsOptions = {
+//   origin: 'https://school-inventory-management-system.vercel.app', // Allow requests from this origin
+//   // methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow these HTTP methods
+//   // allowedHeaders: ['Content-Type', 'Authorization'], // Allow these headers
+// };
+// app.options('*', cors(corsOptions));
+
+
+// app.use(cors(corsOptions));
+
 const corsOptions = {
   origin: 'https://school-inventory-management-system.vercel.app', // Allow requests from this origin
-  // methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow these HTTP methods
-  // allowedHeaders: ['Content-Type', 'Authorization'], // Allow these headers
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow these HTTP methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allow these headers
+  optionsSuccessStatus: 200 // Some legacy browsers choke on 204
 };
-app.options('*', cors(corsOptions));
-
 
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); 
 // app.options('*', cors());
 // const allowedOrigins = [
 //   'https://school-inventory-management-system.vercel.app',
