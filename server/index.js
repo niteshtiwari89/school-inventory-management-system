@@ -286,12 +286,13 @@ const cors =require('cors');
 const authRouter = require('./routes/authRoute');
 const app= express();
 const bodyParser = require('body-parser');
-
+require('dotenv').config()
 const  labs_items = require('./models/labs_items');
 const school_items = require("./models/school_items")
 const canteen_items = require("./models/canteen_items")
 const sports_items = require("./models/sports_items")
 const User =require('./models/userModel');
+// const env = require('')
 
 //MIddleware
 app.use(cors());
@@ -299,12 +300,15 @@ app.use(express.json());
 app.use(bodyParser.json());
 //2) Route
 app.use('/api/auth',authRouter);
+// console.log('MongoDB URI:', process.env.MONGODB_URI);
 
 //3) MOngo Db Connection 
 mongoose
-.connect('mongodb://127.0.0.1:27017/sample')
+.connect(process.env.MONGODB_URI,)
 .then(()=>console.log('Connected to MongoDb!'))
 .catch((error)=> console.error('Failed to connect to MongoDb:',error));
+
+
 
 //4)Global Error Handler
 app.use((err, req, res, next) => {
@@ -583,7 +587,7 @@ app.put('/canteen_items/:id', async (req, res) => {
 });
 
 //5)server
-const PORT=5000;
+const PORT= process.env.PORT || 5000;
 app.listen(PORT,()=>{
     console.log(`App is running on ${PORT}`);
 });
