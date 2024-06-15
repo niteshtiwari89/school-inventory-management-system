@@ -16,7 +16,7 @@ const loginUser =async(values) =>{
     try{
         setError(null);
         setLoading(true);
-        const res = await api.get('https://school-inventory-management-system-oujy.vercel.app/api/auth/login',{
+        const res = await fetch('https://school-inventory-management-system-oujy.vercel.app/api/auth/login',{
             method:'POST',
             headers:{
                 'Content-Type':'application/json'
