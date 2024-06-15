@@ -295,22 +295,29 @@ const User =require('./models/userModel');
 // const env = require('')
 
 //MIddleware
-// app.use(cors());
-const allowedOrigins = [
-  'https://school-inventory-management-system.vercel.app',
-  'https://your-other-frontend-domain.vercel.app' // Add other domains as needed
-];
-app.use(cors({
-  origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps or curl requests)
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.indexOf(origin) === -1) {
-      const msg = 'The CORS policy for this site does not allow access from the specified origin.';
-      return callback(new Error(msg), false);
-    }
-    return callback(null, true);
-  },
-}));
+
+const corsOptions = {
+  origin: 'https://school-inventory-management-system.vercel.app', // Allow requests from this origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow these HTTP methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allow these headers
+};
+app.use(cors(corsOptions));
+// app.options('*', cors());
+// const allowedOrigins = [
+//   'https://school-inventory-management-system.vercel.app',
+//   'https://school-inventory-management-system-oujy.vercel.app' // Add other domains as needed
+// ];
+// app.use(cors({
+//   origin: function (origin, callback) {
+//     // Allow requests with no origin (like mobile apps or curl requests)
+//     if (!origin) return callback(null, true);
+//     if (allowedOrigins.indexOf(origin) === -1) {
+//       const msg = 'The CORS policy for this site does not allow access from the specified origin.';
+//       return callback(new Error(msg), false);
+//     }
+//     return callback(null, true);
+//   },
+// }));
 
 app.use(express.json());
 app.use(bodyParser.json());
