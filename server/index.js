@@ -296,7 +296,10 @@ const User =require('./models/userModel');
 
 //MIddleware
 // app.use(cors());
-const allowedOrigins = ['https://school-inventory-management-system.vercel.app'];
+const allowedOrigins = [
+  'https://school-inventory-management-system.vercel.app',
+  'https://your-other-frontend-domain.vercel.app' // Add other domains as needed
+];
 app.use(cors({
   origin: function (origin, callback) {
     // Allow requests with no origin (like mobile apps or curl requests)
