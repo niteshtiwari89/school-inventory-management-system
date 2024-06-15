@@ -56,7 +56,7 @@ const Login = () => {
 
             {error && (
               <Alert
-                description={error}
+                // description={error}
                 type="error"
                 showIcon
                 closable
