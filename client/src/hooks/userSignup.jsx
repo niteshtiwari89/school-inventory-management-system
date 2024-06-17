@@ -19,7 +19,7 @@ const userSignup = () => {
       setLoading(true);
 
       // Log the values being sent to the API
-      console.log("Sending values to API:", values);
+      // console.log("Sending values to API:", values);
 
       const res = await axios.post('http://localhost:5000/api/auth/signup', values, {
         headers: {
@@ -28,7 +28,7 @@ const userSignup = () => {
       });
 
       // Log the response received from the API
-      console.log("API Response:", res.data);
+      // console.log("API Response:", res.data);
 
       if (res.status === 201) {
           message.success({

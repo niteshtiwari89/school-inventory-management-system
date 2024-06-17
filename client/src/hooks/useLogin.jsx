@@ -1,11 +1,7 @@
 import { message } from "antd";
 import { useState } from "react";
 import {useAuth}  from '../contexts/AuthContext';
-import api from "../connection";
-// import "../Auth/hello.css"
 
-
-// hello this is not something
 
 const useLogin = () => {
 const{login} = useAuth();

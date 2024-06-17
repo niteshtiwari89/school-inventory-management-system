@@ -3,6 +3,7 @@ import { Alert, Button, Card, Flex, Form, Input, Spin, Typography } from "antd";
 import { Link } from "react-router-dom";
 import useLogin from "../hooks/useLogin";
 import loginImage from "../assets/logoschool2.png";
+import "../css/new.css"
 
 const Login = () => {
   const { error, loading, loginUser } = useLogin();

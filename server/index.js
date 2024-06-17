@@ -286,7 +286,7 @@ const cors =require('cors');
 const authRouter = require('./routes/authRoute');
 const app= express();
 const bodyParser = require('body-parser');
-require('dotenv').config()
+// require('dotenv').config()
 const  labs_items = require('./models/labs_items');
 const school_items = require("./models/school_items")
 const canteen_items = require("./models/canteen_items")
