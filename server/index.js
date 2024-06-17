@@ -302,7 +302,7 @@ const corsOptions = {
   preflightContinue: false,
   optionsSuccessStatus: 204,
 };
-app.use(cors(corsOptions));
+app.use(cors("*",corsOptions));
 //2) Route
 main();
 app.use('/api/auth',authRouter);
