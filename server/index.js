@@ -291,48 +291,8 @@ const  labs_items = require('./models/labs_items');
 const school_items = require("./models/school_items")
 const canteen_items = require("./models/canteen_items")
 const sports_items = require("./models/sports_items")
-const User =require('./models/userModel');
+// const User =require('./models/userModel');
 const {main} = require('./newconnection');
-// const env = require('')
-
-//MIddleware
-
-// const corsOptions = {
-//   origin: 'https://school-inventory-management-system.vercel.app', // Allow requests from this origin
-//   // methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow these HTTP methods
-//   // allowedHeaders: ['Content-Type', 'Authorization'], // Allow these headers
-// };
-// app.options('*', cors(corsOptions));
-
-
-// // app.use(cors(corsOptions));
-
-// const corsOptions = {
-//   origin: 'https://school-inventory-management-system.vercel.app', // Allow requests from this origin
-//   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow these HTTP methods
-//   allowedHeaders: ['Content-Type', 'Authorization'], // Allow these headers
-//   credentials: true,
-//   optionsSuccessStatus: 200 // Some legacy browsers choke on 204
-// };
-
-// app.use(cors(corsOptions));
-// app.options('*', cors(corsOptions)); 
-// // app.options('*', cors());
-// const allowedOrigins = [
-//   'https://school-inventory-management-system.vercel.app',
-//   'https://school-inventory-management-system-oujy.vercel.app' // Add other domains as needed
-// ];
-// app.use(cors({
-//   origin: function (origin, callback) {
-//     // Allow requests with no origin (like mobile apps or curl requests)
-//     if (!origin) return callback(null, true);
-//     if (allowedOrigins.indexOf(origin) === -1) {
-//       const msg = 'The CORS policy for this site does not allow access from the specified origin.';
-//       return callback(new Error(msg), false);
-//     }
-//     return callback(null, true);
-//   },
-// }));
 
 app.use(express.json());
 app.use(bodyParser.json());
@@ -340,17 +300,8 @@ app.use(cors());
 //2) Route
 main();
 app.use('/api/auth',authRouter);
-// console.log('MongoDB URI:', process.env.MONGODB_URI);
 
-//3) MOngo Db Connection 
-// mongoose
-// .connect(process.env.MONGODB_URI,)
-// .then(()=>console.log('Connected to MongoDb!'))
-// .catch((error)=> console.error('Failed to connect to MongoDb:',error));
-
-
-
-//4)Global Error Handler
+// Global Error Handler
 app.use((err, req, res, next) => {
     err.statusCode = err.statusCode || 500;
     err.status = err.status || 'error';
@@ -626,7 +577,7 @@ app.put('/canteen_items/:id', async (req, res) => {
   }
 });
 
-//5)server
+//server
 const PORT= process.env.PORT || 5000;
 app.listen(PORT,()=>{
     console.log(`App is running on ${PORT}`);
