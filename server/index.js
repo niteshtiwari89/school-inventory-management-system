@@ -296,7 +296,13 @@ const {main} = require('./newconnection');
 
 app.use(express.json());
 app.use(bodyParser.json());
-app.use(cors());
+const corsOptions = {
+  origin: 'https://school-inventory-management-system.vercel.app', // Your frontend URL
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+};
+app.use(cors(corsOptions));
 //2) Route
 main();
 app.use('/api/auth',authRouter);
