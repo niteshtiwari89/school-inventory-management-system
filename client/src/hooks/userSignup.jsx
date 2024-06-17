@@ -21,7 +21,7 @@ const userSignup = () => {
       // Log the values being sent to the API
       // console.log("Sending values to API:", values);
 
-      const res = await axios.post('https://school-inventory-management-system-rep1.vercel.app/api/auth/signup', values, {
+      const res = await axios.post('https://server-seven-lyart.vercel.app/api/auth/signup', values, {
         headers: {
           'Content-Type': 'application/json',
         },
