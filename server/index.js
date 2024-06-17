@@ -286,7 +286,7 @@ const cors =require('cors');
 const authRouter = require('./routes/authRoute');
 const app= express();
 const bodyParser = require('body-parser');
-// require('dotenv').config()
+require('dotenv').config()
 const  labs_items = require('./models/labs_items');
 const school_items = require("./models/school_items")
 const canteen_items = require("./models/canteen_items")
@@ -304,7 +304,18 @@ const corsOptions = {
 };
 app.use(cors("*",corsOptions));
 //2) Route
-main();
+
+
+    mongoose.connect("mongodb+srv://school_inventory:school123@school.m5z4pna.mongodb.net/?retryWrites=true&w=majority&appName=school").then(() => {
+        console.log("Succesfull")
+    
+    }).catch((err) => {
+        console.log("Error: ", err)
+    })
+
+
+// module.exports = { main };
+// main();
 app.use('/api/auth',authRouter);
 
 // Global Error Handler
