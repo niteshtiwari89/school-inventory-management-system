@@ -336,6 +336,7 @@ const {main} = require('./newconnection');
 
 app.use(express.json());
 app.use(bodyParser.json());
+app.use(cors());
 //2) Route
 main();
 app.use('/api/auth',authRouter);
