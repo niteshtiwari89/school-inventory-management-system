@@ -595,7 +595,7 @@ app.put('/canteen_items/:id', async (req, res) => {
 });
 
 //server
-const PORT= process.env.PORT || 5000;
+const PORT= process.env.PORT || 5500;
 app.listen(PORT,()=>{
     console.log(`App is running on ${PORT}`);
 });

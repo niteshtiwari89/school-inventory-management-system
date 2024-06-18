@@ -46,7 +46,7 @@ const School = () => {
 
   const fetchProspectData = () => {
     axios
-      .get("http://localhost:5000/school_items")
+      .get("http://localhost:5500/school_items")
       .then((response) => {
         setSubmitnewData(response.data);
       })
@@ -57,7 +57,7 @@ const School = () => {
 
   const handleSubmit = () => {
     axios
-      .post("http://localhost:5000/school_items", data)
+      .post("http://localhost:5500/school_items", data)
       .then(() => {
         setUpdateList(!updateList);
         handleClose();
@@ -69,7 +69,7 @@ const School = () => {
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:5000/school_items/${id}`)
+      .delete(`http://localhost:5500/school_items/${id}`)
       .then(() => {
         setUpdateList(!updateList);
       })
@@ -86,7 +86,7 @@ const School = () => {
 
   const handleSaveEdit = () => {
     axios
-      .put(`http://localhost:5000/school_items/${editingData._id}`, data)
+      .put(`http://localhost:5500/school_items/${editingData._id}`, data)
       .then(() => {
         setUpdateList(!updateList);
         handleClose();
