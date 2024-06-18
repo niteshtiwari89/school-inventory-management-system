@@ -18,7 +18,9 @@ app.use(bodyParser.json());
 app.use(cors(
   {
     origin:["https://school-inventory-management-system.vercel.app"],
-    credentials: true
+    credentials: true,
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    allowedHeaders: ['Content-Type', 'Authorization']
   }
 ))
 //2) Route
