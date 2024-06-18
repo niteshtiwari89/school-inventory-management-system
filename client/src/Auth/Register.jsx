@@ -68,7 +68,7 @@ const Register = () => {
                 <Input.Password size="large" placeholder="Enter your Password" />
               </Form.Item>
               <Form.Item
-                label="Password"
+                label="Confirm Password"
                 name="passwordConfirm"
                 rules={[
                   {
