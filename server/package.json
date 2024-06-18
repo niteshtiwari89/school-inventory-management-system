@@ -9,6 +9,9 @@
     "start": "nodemon index",
     "postinstall": "npm rebuild bcrypt"
   },
+  "engines": {
+    "node": ">=14.0.0"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
