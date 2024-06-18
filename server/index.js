@@ -296,13 +296,13 @@ const {main} = require('./newconnection');
 
 app.use(express.json());
 app.use(bodyParser.json());
-const corsOptions = {
-  origin: 'https://school-inventory-management-system.vercel.app', // Your frontend URL
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  preflightContinue: false,
-  optionsSuccessStatus: 204,
-};
-app.use(cors("*",corsOptions));
+app.use(cors(
+  {
+    origin:[""],
+    methods:["POST","GET","PUT","DELETE"],
+    credentials: true
+  }
+))
 //2) Route
 
 
@@ -313,7 +313,9 @@ app.use(cors("*",corsOptions));
         console.log("Error: ", err)
     })
 
-
+app.get("/",(req,res)=>{
+  res.json("Hello");
+})
 // module.exports = { main };
 // main();
 app.use('/api/auth',authRouter);
