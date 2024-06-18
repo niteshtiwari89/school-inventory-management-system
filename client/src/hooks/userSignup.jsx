@@ -9,6 +9,7 @@ const userSignup = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(null);
 
+  axios.defaults.withCredentials = true;
   const registerUser = async (values) => {
     if (values.password !== values.passwordConfirm) {
       return setError('Passwords are not the same');
@@ -21,7 +22,7 @@ const userSignup = () => {
       // Log the values being sent to the API
       // console.log("Sending values to API:", values);
 
-      const res = await axios.post('http://localhost:5500/api/auth/signup', values, {
+      const res = await axios.post('https://school-inventory-management-system-rhdc1l85x.vercel.app/api/auth/signup', values, {
         headers: {
           'Content-Type': 'application/json',
         },

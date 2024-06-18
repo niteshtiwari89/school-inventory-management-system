@@ -298,7 +298,7 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(cors(
   {
-    origin:["https://school-inventory-management-system.vercel.app"],
+    origin:["https://school-inventory-management-system.vercel.app/"],
     methods:["POST","GET","PUT","DELETE"],
     credentials: true
   }
