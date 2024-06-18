@@ -7,7 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "serverStart": "nodemon index.js",
     "start": "nodemon index",
-    "postinstall": "npm rebuild bcrypt"
+    "postinstall": "npm rebuild bcrypt",
+    "preinstall": "chmod +x node_modules/.bin/node-pre-gyp"
+
+
   },
   "engines": {
     "node": ">=14.0.0"
