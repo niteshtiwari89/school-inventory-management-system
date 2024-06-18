@@ -1,6 +1,7 @@
 import { message } from "antd";
 import { useState } from "react";
 import {useAuth}  from '../contexts/AuthContext';
+import axios from "axios";
 
 
 const useLogin = () => {
@@ -8,12 +9,12 @@ const{login} = useAuth();
 const [error,setError] = useState(null);
 const [loading,setLoading]=useState(false);
 
+axios.defaults.withCredentials = true;
 const loginUser =async(values) =>{
     try{
         setError(null);
         setLoading(true);
-        const res = await fetch('https://school-inventory-management-system-rhdc1l85x.vercel.app/api/auth/login',{
-            method:'POST',
+        const res = await axios.post('https://school-inventory-management-system-rhdc1l85x.vercel.app/api/auth/login',{
             headers:{
                 'Content-Type':'application/json'
             },
