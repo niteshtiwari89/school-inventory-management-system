@@ -19,6 +19,7 @@ const loginUser =async(values) =>{
                 'Content-Type':'application/json'
             },
             body: JSON.stringify(values),
+            withCredentials:true
         });
         
         const data =await res.json();

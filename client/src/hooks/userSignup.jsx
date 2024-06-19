@@ -9,7 +9,7 @@ const userSignup = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(null);
 
-  axios.defaults.withCredentials = true;
+  // axios.defaults.withCredentials = true;
   const registerUser = async (values) => {
     if (values.password !== values.passwordConfirm) {
       return setError('Passwords are not the same');
@@ -27,7 +27,7 @@ const userSignup = () => {
           'Content-Type': 'application/json',
           
         },
-        withCredentials:true
+        withCredentials:true,
       });
 
       // Log the response received from the API
