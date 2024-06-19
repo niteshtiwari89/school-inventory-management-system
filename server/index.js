@@ -137,12 +137,13 @@ app.use('/api/auth/signup', (req, res, next) => {
   res.header('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
   res.header('Access-Control-Allow-Credentials', 'true');
-  next();
-  if (req.method === 'OPTIONS') {
-    res.sendStatus(200);
-  } else {
-    next();
-  }
+  // next();
+  // if (req.method === 'OPTIONS') {
+  //   res.sendStatus(200);
+  // } else {
+  //   next();
+  // }
+  
 });
 app.options('*', (req, res) => {
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
