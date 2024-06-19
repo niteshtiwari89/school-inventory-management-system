@@ -15,8 +15,14 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { main } = require('./newconnection');
 // const User =require('./models/userModel');
-const createError = require('./utils/appError')
 
+//MIddleware
+app.use(cors(
+  {
+    origin:true,
+    credentials:true,
+  }
+));
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(cors(
