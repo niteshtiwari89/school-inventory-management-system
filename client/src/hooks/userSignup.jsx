@@ -9,7 +9,7 @@ const userSignup = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(null);
 
-  // axios.defaults.withCredentials = true;
+  axios.defaults.withCredentials = true;
   const registerUser = async (values) => {
     if (values.password !== values.passwordConfirm) {
       return setError('Passwords are not the same');
@@ -23,12 +23,10 @@ const userSignup = () => {
       // console.log("Sending values to API:", values);
 
       const res = await axios.post('https://school-inventory-management-system-server.vercel.app/api/auth/signup', values, {
-        // headers: {
-        //   'Content-Type': 'application/json',
+        headers: {
+          'Content-Type': 'application/json',
           
-        // },
-        withCredentials:true,
-        // credential:'include',
+        },
       });
 
       // Log the response received from the API
