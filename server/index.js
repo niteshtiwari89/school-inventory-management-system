@@ -132,7 +132,7 @@ app.post('/api/auth/login', async (req, res, next) => {
 //     next();
 //   }
 // });
-app.use('/api/auth/signup', (req, res, next) => {
+app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'https://school-inventory-management-system.vercel.app');
   res.header('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
@@ -144,7 +144,11 @@ app.use('/api/auth/signup', (req, res, next) => {
     next();
   }
 });
-
+app.options('*', (req, res) => {
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.sendStatus(200);
+});
 app.post('/labs_items', async (req, res) => {
   try {
     const newItem = new labs_items(req.body);
