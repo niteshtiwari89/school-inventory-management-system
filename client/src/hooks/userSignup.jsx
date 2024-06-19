@@ -22,13 +22,14 @@ const userSignup = () => {
       // Log the values being sent to the API
       // console.log("Sending values to API:", values);
 
-      const res = await axios.post('https://school-inventory-management-system-server.vercel.app/api/auth/signup', values, {
+      const res = await fetch('https://school-inventory-management-system-server.vercel.app/api/auth/signup', values, {
+        method:'POST',
         headers: {
           'Content-Type': 'application/json',
           
         },
-        withCredentials:true,
-      });
+        credential:'include',
+     });
 
       // Log the response received from the API
       // console.log("API Response:", res.data);
