@@ -132,7 +132,7 @@ app.post('/api/auth/login', async (req, res, next) => {
 //     next();
 //   }
 // });
-app.use((req, res, next) => {
+app.use('/api/auth/signup', (req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'https://school-inventory-management-system.vercel.app');
   res.header('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
