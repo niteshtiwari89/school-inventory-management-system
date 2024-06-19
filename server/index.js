@@ -12,7 +12,12 @@ const sports_items = require("./models/sports_items")
 // const User =require('./models/userModel');
 
 //MIddleware
-app.use(cors());
+app.use(cors(
+  {
+    origin:true,
+    credentials:true,
+  }
+));
 app.use(express.json());
 app.use(bodyParser.json());
 //2) Route
@@ -33,6 +38,7 @@ app.use((err, req, res, next) => {
         status: err.status,
         message: err.message,
     });
+    res.setHeader('Access-Control-Allow-Credentials','true')
 });
 
 app.post('/labs_items', async (req, res) => {
