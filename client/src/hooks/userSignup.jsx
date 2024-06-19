@@ -28,7 +28,7 @@ const userSignup = () => {
           
         },
         withCredentials:true,
-        credential:'include',
+        // credential:'include',
       });
 
       // Log the response received from the API
