@@ -14,7 +14,7 @@ const sports_items = require("./models/sports_items")
 //MIddleware
 app.use(cors(
   {
-    origin:true,
+    origin:'https://school-inventory-management-system-server.vercel.app',
     credentials:true,
   }
 ));
