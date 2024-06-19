@@ -27,6 +27,7 @@ const userSignup = () => {
           'Content-Type': 'application/json',
           
         },
+        withCredentials:true
       });
 
       // Log the response received from the API

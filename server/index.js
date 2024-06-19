@@ -121,17 +121,29 @@ app.post('/api/auth/login', async (req, res, next) => {
   }
 })
 
-app.use((req, res, next) => {
+// app.use((req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', 'https://school-inventory-management-system.vercel.app');
+//   res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
+//   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+//   res.header('Access-Control-Allow-Credentials', 'true');
+//   if (req.method === 'OPTIONS') {
+//     res.sendStatus(204);
+//   } else {
+//     next();
+//   }
+// });
+app.use('/api/auth/signup', (req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'https://school-inventory-management-system.vercel.app');
-  res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.header('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
   res.header('Access-Control-Allow-Credentials', 'true');
   if (req.method === 'OPTIONS') {
-    res.sendStatus(204);
+    res.sendStatus(200);
   } else {
     next();
   }
 });
+
 app.post('/labs_items', async (req, res) => {
   try {
     const newItem = new labs_items(req.body);
