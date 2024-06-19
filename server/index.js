@@ -143,11 +143,11 @@ app.use('/api/auth/signup', (req, res, next) => {
   // } else {
   //   next();
   // }
-  
+
 });
 app.options('*', (req, res) => {
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
   res.sendStatus(200);
 });
 app.post('/labs_items', async (req, res) => {
