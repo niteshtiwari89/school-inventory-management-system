@@ -650,7 +650,10 @@ function getModelByType(type) {
 
 
 //5)server
-const PORT=5000;
-app.listen(PORT,()=>{
-    console.log(`App is running on ${PORT}`);
+
+
+//server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`App is running on ${PORT}`);
 });
