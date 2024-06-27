@@ -12,7 +12,7 @@ const useLogin = () => {
     try {
       setError(null);
       setLoading(true);
-      const res = await fetch("https://school-inventory-management-system-server.vercel.app/api/auth/login", {
+      const res = await fetch("https://school-inventory-management-system-server-tau.vercel.app/api/auth/login", {
           method:'POST',
         headers: {
           "Content-Type": "application/json",
