@@ -13,7 +13,7 @@ const useLogin = () => {
       setError(null);
       setLoading(true);
       const res = await fetch("http://localhost:5000/api/auth/login", {
-           method:'POST',
+          method:'POST',
         headers: {
           "Content-Type": "application/json",
         },
