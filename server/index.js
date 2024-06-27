@@ -295,7 +295,13 @@ const User =require('./models/userModel');
 const logs_schema = require('./models/logs_schema');
 
 //MIddleware
-app.use(cors());
+// app.use(cors());
+const corsOptions = {
+  origin: 'https://school-inventory-management-system.vercel.app',
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(bodyParser.json());
 //2) Route
@@ -303,7 +309,7 @@ app.use('/api/auth',authRouter);
 
 //3) MOngo Db Connection 
 mongoose
-.connect('mongodb://127.0.0.1:27017/sample')
+.connect('mongodb+srv://school_inventory:school123@school.m5z4pna.mongodb.net/?retryWrites=true&w=majority&appName=school')
 .then(()=>console.log('Connected to MongoDb!'))
 .catch((error)=> console.error('Failed to connect to MongoDb:',error));
 

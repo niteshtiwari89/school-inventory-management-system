@@ -9,8 +9,6 @@
     "start": "nodemon index",
     "postinstall": "npm rebuild bcrypt",
     "preinstall": "chmod +x node_modules/.bin/node-pre-gyp"
-
-
   },
   "engines": {
     "node": ">=14.0.0"
