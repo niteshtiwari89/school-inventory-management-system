@@ -317,7 +317,9 @@ app.use((err, req, res, next) => {
         message: err.message,
     });
 });
-
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 app.post('/labs_items', async (req, res) => {
   try {
     const newItem = new labs_items(req.body);
