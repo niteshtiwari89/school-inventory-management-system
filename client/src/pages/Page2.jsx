@@ -1,112 +1,113 @@
-// import React from "react";
-// import { useState } from "react";
 import "../css/Page2.css";
-// import { Link, Route, Routes } from "react-router-dom";
-// import School from "../layout/School";
-// import Tab from "@mui/material/Tab";
-// import TabContext from "@mui/lab/TabContext";
-// import TabList from "@mui/lab/TabList";
-// import SchoolStickyHeadTable from "../TabPages/SchoolTabpage";
-// import TabPanel from "@mui/lab/TabPanel";
-// import { useTheme } from "@mui/material/styles";
-// import {Box} from "@mui/material";
-// import { Tabs } from "@mui/material";
-import TextField from "@mui/material/TextField";
-// import SportsStickyHeadTable from "../TabPages/SportsTabpage";
-// import CanteenStickyHeadTable from "../TabPages/CanteenTabpage";
-// import LabsStickyHeadTable from "../TabPages/LabTabPage";
-
-
+import axios from "axios";
+import {ForwardOutlined} from "@ant-design/icons";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-// import { SwipeableDrawer } from "@mui/material";
 
 function Page2() {
-  // const theme = useTheme();
-  // const [value, setValue] = useState("1");
+const [schooldata,setSchooldata] = useState([]);
+const [sportsdata,setSportsdata] = useState([]);
+const [canteendata,setCanteendata] = useState([]);
+const [labsdata,setLabsdata] = useState([]);
+const [schoolsum, setSchoolsum] = useState(0);
+const [sportssum, setSportsSum] = useState(0);
+const [canteensum, setCanteensum] = useState(0);
+const [labsum, setLabsum] = useState(0);
 
-  // const tabArray = [
-  //   {
-  //     value: "1",
-  //     label: "school items",
-  //     component: <SchoolStickyHeadTable title="School Items" />,
-  //   },
-  //   {
-  //     value: "2",
-  //     label: "sports items",
-  //     component: <SportsStickyHeadTable title="Sports Items" />,
-  //   },
-  //   {
-  //     value: "3",
-  //     label: "canteen items",
-  //     component: <CanteenStickyHeadTable title="Canteen Items" />,
-  //   },
-  //   {
-  //     value: "4",
-  //     label: "labs items",
-  //     component: <LabsStickyHeadTable title="Labs Items" />,
-  //   },
-  // ];
-  // const handleChange = (event, newValue) => {
-  //   setValue(newValue);
-  // };
+useEffect(()=>{
+  axios.get("http://localhost:5000/sports_items").then((response)=>{
+    setSportsdata(response.data)
+    // console.log(response)
+  }).
+  catch((error)=>{
+    console.error("Error Fetching Data:",error);
+  })
 
-  // const handleChangeIndex = (index) => {
-  //   setValue(index);
-  // };
-  // useEffect(() => {
-  //   const storedTabIndex = localStorage.getItem('activeTabIndex');
-  //   if (storedTabIndex !== null) {
-  //     setValue(parseInt(storedTabIndex)); // Set the active tab index from localStorage
-  //   }
-  // }, []);
+  axios.get("http://localhost:5000/school_items").then((response)=>{
+    setSchooldata(response.data)
+  }).
+  catch((error)=>{
+    console.error("Error Fetching Data:",error);
+  })
+
+  axios.get("http://localhost:5000/canteen_items").then((response)=>{
+    setCanteendata(response.data)
+  }).
+  catch((error)=>{
+    console.error("Error Fetching Data:",error);
+  })
+
+  axios.get("http://localhost:5000/labs_items").then((response)=>{
+    setLabsdata(response.data)
+  }).
+  catch((error)=>{
+    console.error("Error Fetching Data:",error);
+  })
+},[])
+
+useEffect(() => {
+  const calculateSum = () => {
+    let total = 0;
+    sportsdata.forEach(item => {
+      total += item.quantity;
+    });
+    setSportsSum(total);
+  };
+
+  calculateSum();
+}, [sportsdata]);
+
+useEffect(() => {
+  const calculateSum = () => {
+    let total = 0;
+    schooldata.forEach(item => {
+      total += item.quantity;
+    });
+    setSchoolsum(total);
+  };
+
+  calculateSum();
+}, [schooldata]);
+
+useEffect(() => {
+  const calculateSum = () => {
+    let total = 0;
+    canteendata.forEach(item => {
+      total += item.quantity;
+    });
+    setCanteensum(total);
+  };
+
+  calculateSum();
+}, [canteendata]);
+
+useEffect(() => {
+  const calculateSum = () => {
+    let total = 0;
+    labsdata.forEach(item => {
+      total += item.quantity;
+    });
+    setLabsum(total);
+  };
+
+  calculateSum();
+}, [labsdata]);
 
   return (
     <>
       <div className="page2container">
-        <div className="searchbox">
-          {/* <input type="text" name="" placeholder="Search" id="" /> */}
-          {/* <Box
-            // component="form"
-            // sx={{
-            //   "& .MuiTextField-root": { m: 1, width: "25ch" },
-            // }}
-            noValidate
-            autoComplete="off"
-          > */}
-            <TextField
-              id="standard"
-              label="Search"
-              // onChange={{}}
-              //  defaultValue="Hello World"
-            />
-          {/* </Box> */}
-          {/* <div className="w-62">
-            <div className="relative w-full min-w-[200px] h-10">
-              <input
-                className="peer w-full h-full bg-transparent text-blue-gray-700 font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 border focus:border-2 border-t-transparent focus:border-t-transparent text-sm px-3 py-2.5 rounded-[7px] border-blue-gray-200 focus:border-gray-900"
-                placeholder=" "
-              />
-              <label className="flex w-full h-full select-none pointer-events-none absolute left-0 font-normal !overflow-visible truncate peer-placeholder-shown:text-blue-gray-500 leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500 transition-all -top-1.5 peer-placeholder-shown:text-sm text-[11px] peer-focus:text-[11px] before:content[' '] before:block before:box-border before:w-2.5 before:h-1.5 before:mt-[6.5px] before:mr-1 peer-placeholder-shown:before:border-transparent before:rounded-tl-md before:border-t peer-focus:before:border-t-2 before:border-l peer-focus:before:border-l-2 before:pointer-events-none before:transition-all peer-disabled:before:border-transparent after:content[' '] after:block after:flex-grow after:box-border after:w-2.5 after:h-1.5 after:mt-[6.5px] after:ml-1 peer-placeholder-shown:after:border-transparent after:rounded-tr-md after:border-t peer-focus:after:border-t-2 after:border-r peer-focus:after:border-r-2 after:pointer-events-none after:transition-all peer-disabled:after:border-transparent peer-placeholder-shown:leading-[3.75] text-gray-500 peer-focus:text-gray-900 before:border-blue-gray-200 peer-focus:before:!border-gray-900 after:border-blue-gray-200 peer-focus:after:!border-gray-900">
-                Username
-              </label>
-            </div>
-          </div> */}
-
-          {/* <TextField  id="standard-basic" label="Standard" variant="outlined" /> */}
-        </div>
-        {/* <hr /> */}
         <div className="recent-items">
           <div className="items">
             <div className="item-head">School Inventory</div>
             <div className="item-body">
               <div className="item-body-list">
                 <div className="list-head">Total Inventory</div>
-                <div className="list-body">40 </div>
+                <div className="list-body">{schooldata.length}</div>
               </div>
               {/* {count} */}
               <div className="item-body-list">
                 <div className="list-head">Available</div>
-                <div className="list-body">25</div>
+                <div className="list-body">{schoolsum}</div>
               </div>
               <div className="item-body-list">
                 <div className="list-head">Used</div>
@@ -115,7 +116,7 @@ function Page2() {
             </div>
             <div className="item-link">
               <Link to="/school">
-              <button>Go To School</button>
+              <button><ForwardOutlined /></button>
               </Link>
             </div>
           </div>
@@ -124,11 +125,11 @@ function Page2() {
             <div className="item-body">
               <div className="item-body-list">
                 <div className="list-head">Total Inventory</div>
-                <div className="list-body">50</div>
+                <div className="list-body">{sportsdata.length}</div>
               </div>
               <div className="item-body-list">
                 <div className="list-head">Available</div>
-                <div className="list-body">30</div>
+                <div className="list-body">{sportssum}</div>
               </div>
               <div className="item-body-list">
                 <div className="list-head">Used</div>
@@ -137,7 +138,7 @@ function Page2() {
             </div>
             <div className="item-link">
               <Link to="/sports">
-              <button>Go To Sports</button>
+              <button><ForwardOutlined /></button>
               </Link>
             </div>
           </div>
@@ -146,11 +147,11 @@ function Page2() {
             <div className="item-body">
               <div className="item-body-list">
                 <div className="list-head">Total Inventory</div>
-                <div className="list-body">70</div>
+                <div className="list-body">{labsdata.length}</div>
               </div>
               <div className="item-body-list">
                 <div className="list-head">Available</div>
-                <div className="list-body">40</div>
+                <div className="list-body">{labsum}</div>
               </div>
               <div className="item-body-list">
                 <div className="list-head">Used</div>
@@ -159,7 +160,7 @@ function Page2() {
             </div>
             <div className="item-link">
               <Link to="/canteen">
-              <button>Go To Canteen</button>
+              <button><ForwardOutlined /></button>
               </Link>
             </div>
           </div>
@@ -168,11 +169,11 @@ function Page2() {
             <div className="item-body">
               <div className="item-body-list">
                 <div className="list-head">Total Inventory</div>
-                <div className="list-body">40</div>
+                <div className="list-body">{canteendata.length}</div>
               </div>
               <div className="item-body-list">
                 <div className="list-head">Available</div>
-                <div className="list-body">30</div>
+                <div className="list-body">{canteensum}</div>
               </div>
               <div className="item-body-list">
                 <div className="list-head">Used</div>
@@ -181,7 +182,7 @@ function Page2() {
             </div>
             <div className="item-link">
               <Link to="/labs">
-              <button>Go To Labs</button>
+              <button><ForwardOutlined/></button>
               </Link>
             </div>
           </div>

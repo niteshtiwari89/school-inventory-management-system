@@ -1,14 +1,10 @@
-// import { Component } from "react";
-// import { Nav, NavItem, NavLink } from "reactstrap";
 import "../css/navbar.css";
 import { Link } from "react-router-dom";
-// import school from "./School";
 import LogoutIcon from "@mui/icons-material/Logout";
-// import { useState } from "react";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-// import { AuthContext } from "../AuthContext";
-import {useAuth} from '../contexts/AuthContext';
-// export default function DashBoard({onButtonClick})
+import InventoryIcon from '@mui/icons-material/Inventory';
+import { useAuth } from "../contexts/AuthContext";
+import SportsIcon from '@mui/icons-material/Sports';
 export default function DashBoard() {
   // const [user, setUser] = useState({ userName: "" });
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -16,78 +12,13 @@ export default function DashBoard() {
   //   setUser({ userName: "" });
   //   setIsLoggedIn(false);
   // };
-  const {logout} = useAuth();
+  const { logout } = useAuth();
   // const {onButtonClick} = props
   return (
     <>
-      {/* <AuthContext.Provider
-          value={{ user, setUser, isLoggedIn, setIsLoggedIn }}
-        > */}
-      {/* <div className="navigation">
-                    <h2>DashBoard</h2>
-                    <Nav vertical >
-                        <NavItem>
-                            <NavLink href="">
-                                <Link to="/">
-                                    <div className="href">Total Inventory</div>
-                                </Link>
-                            </NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink href="">
-                                <Link to="/school">
-                                    <div className="href">School Items</div>
-                                </Link>
-                            </NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink href="">
-                                <Link to="/sports">
-                                    <div className="href">Sports Items</div>
-                                </Link>
-                            </NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink href="">
-                                <Link to="/labs">
-                                    <div className="href">Lab Store</div>
-                                </Link>
-                            </NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink href="">
-                                <Link to="/canteen">
-                                    <div className="href">Canteen Store</div>
-                                </Link>
-                            </NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink href="">
-                                <Link to="/admin">
-                                    <div className="href">Admin Store</div>
-                                </Link>
-                            </NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink href="">
-                                <Link to="/Somemore">
-                                    <div className="href">Page</div>
-                                </Link>
-                            </NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink href="">
-                                <Link to="/somemore2">
-                                    <div className="href">Page</div>
-                                </Link>
-                            </NavLink>
-                        </NavItem>
-                    </Nav>
-                </div> */}
-
       <div className="myclass">
         <div className="myclassheading">DashBoard</div>
-        
+
         <ul className="list-none class-list">
           <li>
             <Link to="/">
@@ -120,7 +51,7 @@ export default function DashBoard() {
               </Link>
             </li> */}
           <li>
-            <Link to="/Somemore">
+            <Link to="/stock_adjustment">
               <button>Stock Adjustment</button>
             </Link>
           </li>
@@ -130,21 +61,21 @@ export default function DashBoard() {
               </Link>
             </li> */}
         </ul>
-      <div className="logout">
-        <div className="icond">
-          <AccountCircleIcon fontSize="large" />
+        <div className="logout">
+          <div className="icond">
+            <AccountCircleIcon fontSize="large" />
+          </div>
+          <button
+            // onClick={() => {
+            //   console.log("hello");
+            // }}
+            // onClick={onButtonClick}
+            onClick={logout}
+          >
+            <LogoutIcon />
+            Logout
+          </button>
         </div>
-        <button
-          // onClick={() => {
-          //   console.log("hello");
-          // }}
-          // onClick={onButtonClick}
-          onClick={logout}
-        >
-          <LogoutIcon />
-          Logout
-        </button>
-      </div>
       </div>
       {/* </AuthContext.Provider> */}
     </>

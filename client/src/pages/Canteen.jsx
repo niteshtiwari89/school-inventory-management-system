@@ -226,7 +226,7 @@ const Canteen = () => {
                     required
                   />
                 </Grid>
-                <Grid item xs={12}>
+                {editingData?"":<Grid item xs={12}>
                   <TextField
                     id="quantity"
                     name="quantity"
@@ -237,7 +237,7 @@ const Canteen = () => {
                     fullWidth
                     required
                   />
-                </Grid>
+                </Grid>}
                 <Grid item xs={12}>
                   <TextField
                     id="category"

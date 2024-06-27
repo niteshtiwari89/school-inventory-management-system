@@ -209,7 +209,7 @@ const Sports = () => {
 
   const handleSaveEdit = () => {
     axios
-      .put(`http://localhost:5000/spots_items/${editingData._id}`, data)
+      .put(`http://localhost:5000/sports_items/${editingData._id}`, data)
       .then(() => {
         setUpdateList(!updateList);
         handleClose();
@@ -408,7 +408,7 @@ const Sports = () => {
                     required
                   />
                 </Grid>{" "}
-                <Grid item xs={12}>
+                {editingData? "":<Grid item xs={12}>
                   <TextField
                     sx={{ marginTop: "1rem" }}
                     id="quantity"
@@ -420,7 +420,7 @@ const Sports = () => {
                     fullWidth
                     required
                   />
-                </Grid>{" "}
+                </Grid>}
                 <Grid item xs={12}>
                   <TextField 
                     sx={{ marginTop: "1rem" }}

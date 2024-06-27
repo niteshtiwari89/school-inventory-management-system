@@ -138,6 +138,8 @@ import Page2 from "./pages/Page2";
 import Sports from "./pages/Sports";
 import Labs from "./pages/Labs";
 import Canteen from './pages/Canteen';
+import Logs from "./pages/Logs";
+import More from "./pages/More";
 // import { AuthProvider } from "./contexts/AuthContext";
 
 const App = () => {
@@ -163,6 +165,9 @@ const App = () => {
             <Route path="sports" element={<Sports />} />
             <Route path="labs" element={<Labs />} />
             <Route path="canteen" element={<Canteen />} />
+            <Route path="stock_adjustment/*" element={<More/>}>
+              <Route path="logs" element={<Logs/>}></Route>
+            </Route>
           </Route>
         </Routes>
       </Router>

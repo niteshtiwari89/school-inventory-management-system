@@ -43,7 +43,8 @@ const Labs = () => {
     hazardious: '',
     cost: '',
     purchase_date: '',
-    expiry_date: ''
+    expiry_date: '',
+    quantity:''
   });
 
   useEffect(() => {
@@ -128,7 +129,8 @@ const Labs = () => {
       hazardious: '',
       cost: '',
       purchase_date: '',
-      expiry_date: ''
+      expiry_date: '',
+      quantity:''
     });
   };
 
@@ -344,6 +346,18 @@ const Labs = () => {
                     required
                   />
                 </Grid>
+                {editingData?"":<Grid item xs={12}>
+                  <TextField
+                    id="quantity"
+                    name="quantity"
+                    label="Quantity"
+                    variant="outlined"
+                    value={data.quantity}
+                    onChange={handleInputChange}
+                    fullWidth
+                    required
+                  />
+                </Grid>}
               </Grid>
             </DialogContentText>
           </DialogContent>
@@ -393,6 +407,7 @@ const Labs = () => {
                         <TableCell align="center">Dimension</TableCell>
                         <TableCell align="center">Weight</TableCell>
                         <TableCell align="center">Barcode</TableCell>
+                        <TableCell align="center">Quantity</TableCell>
                         <TableCell align="center">Subject</TableCell>
                         <TableCell align="center">Refrigirator</TableCell>
                         <TableCell align="center">Hazardious</TableCell>
@@ -411,6 +426,7 @@ const Labs = () => {
                           <TableCell align="center">{data.dimension}</TableCell>
                           <TableCell align="center">{data.weight}</TableCell>
                           <TableCell align="center">{data.barcode}</TableCell>
+                          <TableCell align="center">{data.quantity}</TableCell>
                           <TableCell align="center">{data.subject}</TableCell>
                           <TableCell align="center">{data.refrigirator}</TableCell>
                           <TableCell align="center">{data.hazardious}</TableCell>
