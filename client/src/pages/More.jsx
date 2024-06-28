@@ -35,7 +35,7 @@ function More() {
 
   const fetchInventoryOptions = async (type) => {
     try {
-      const response = await axios.get(`http://localhost:5000/${type}`);
+      const response = await axios.get(`https://school-inventory-management-system-server-tau.vercel.app/${type}`);
       setInventoryOptions(response.data);
     } catch (error) {
       console.error("Error fetching inventory options:", error);
@@ -45,7 +45,7 @@ function More() {
   const fetchInventoryDetails = async (inventory) => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/${inventoryType}/${inventory._id}`
+        `https://school-inventory-management-system-server-tau.vercel.app/${inventoryType}/${inventory._id}`
       );
       setPreviousQuantity(response.data.quantity);
     } catch (error) {
@@ -74,7 +74,7 @@ function More() {
 
     try {
       const response = await axios.put(
-        `http://localhost:5000/${inventoryType}/${inventory._id}`,
+        `https://school-inventory-management-system-server-tau.vercel.app/${inventoryType}/${inventory._id}`,
         data
       );
       console.log("Data updated:", response.data);
@@ -83,7 +83,7 @@ function More() {
       console.error("Error updating data:", error);
     }
 
-    await axios.post(`http://localhost:5000/logs`, {
+    await axios.post(`https://school-inventory-management-system-server-tau.vercel.app/logs`, {
       inventory_name: inventoryType
         .split("_")
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
