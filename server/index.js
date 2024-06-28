@@ -1,15 +1,15 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const cors =require('cors');
+const cors = require('cors');
 const authRouter = require('./routes/authRoute');
-const app= express();
+const app = express();
 const bodyParser = require('body-parser');
 
-const  labs_items = require('./models/labs_items');
+const labs_items = require('./models/labs_items');
 const school_items = require("./models/school_items")
 const canteen_items = require("./models/canteen_items")
 const sports_items = require("./models/sports_items")
-const User =require('./models/userModel');
+const User = require('./models/userModel');
 const logs_schema = require('./models/logs_schema');
 
 //MIddleware
@@ -23,23 +23,88 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(bodyParser.json());
 //2) Route
-app.use('/api/auth',authRouter);
+// app.use('/api/auth', authRouter);
+app.post('/api/auth/signup', async (req, res, next) => {
+  try {
+    const user1 = await User.findOne({ email: req.body.email });
 
+    if (user1) {
+      return next(new createError("User already exits!", 400))
+    }
+    const hashedPassword = await bcrypt.hash(req.body.password, 12);
+
+    const newUser = await User.create({
+      ...req.body,
+      password: hashedPassword,
+    });
+
+    //Assign JWT (json web Token) to user
+    const token = jwt.sign({ _id: newUser._id }, 'secretkey123', {
+      expiresIn: '90d',
+    });
+    res.status(201).json({
+      status: 'success',
+      message: 'User registered sucesssfully',
+      token,
+      user: {
+        _id: newUser._id,
+        name: newUser.name,
+        email: newUser.email,
+        // role: newUser.role,
+      },
+    })
+  } catch (error) {
+    next(error);
+  }
+}
+)
+
+app.post('/api/auth/login', async (req, res, next) => {
+  try {
+    const { email, password } = req.body;
+
+    const user = await User.findOne({ email });
+
+    if (!user) return next(new createError('User not found', 404));
+
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+
+    if (!isPasswordValid) {
+      return next(new createError('Invalid email or password', 401))
+    }
+    const token = jwt.sign({ _id: user._id }, 'secretkey123', {
+      expiresIn: '90d',
+    });
+    res.status(200).json({
+      status: 'success',
+      token,
+      message: 'Logged in successfully',
+      user: {
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        // role: user.role,
+      }
+    })
+  } catch (error) {
+    next(error)
+  }
+};)
 //3) MOngo Db Connection 
 mongoose
-.connect('mongodb+srv://school_inventory:school123@school.m5z4pna.mongodb.net/?retryWrites=true&w=majority&appName=school')
-.then(()=>console.log('Connected to MongoDb!'))
-.catch((error)=> console.error('Failed to connect to MongoDb:',error));
+  .connect('mongodb+srv://school_inventory:school123@school.m5z4pna.mongodb.net/?retryWrites=true&w=majority&appName=school')
+  .then(() => console.log('Connected to MongoDb!'))
+  .catch((error) => console.error('Failed to connect to MongoDb:', error));
 
 //4)Global Error Handler
 app.use((err, req, res, next) => {
-    err.statusCode = err.statusCode || 500;
-    err.status = err.status || 'error';
+  err.statusCode = err.statusCode || 500;
+  err.status = err.status || 'error';
 
-    res.status(err.statusCode).json({
-        status: err.status,
-        message: err.message,
-    });
+  res.status(err.statusCode).json({
+    status: err.status,
+    message: err.message,
+  });
 });
 app.get('/', (req, res) => {
   res.send('Hello World!')
@@ -163,12 +228,12 @@ app.put('/school_items/:id', async (req, res) => {
     const updatedItem = await school_items.findByIdAndUpdate(
       req.params.id,
       {
-        item_name:req.body.item_name,
-        unit:req.body.unit,
+        item_name: req.body.item_name,
+        unit: req.body.unit,
         quantity: req.body.quantity,
-        purchase_date:req.body.purchase_date,
-        expiry_date:req.body.expiry_date,
-        purchase_price:req.body.purchase_price
+        purchase_date: req.body.purchase_date,
+        expiry_date: req.body.expiry_date,
+        purchase_price: req.body.purchase_price
       },
       { new: true }
     );
@@ -201,18 +266,18 @@ app.put('/labs_items/:id', async (req, res) => {
     const updatedItem = await labs_items.findByIdAndUpdate(
       req.params.id,
       {
-        item_name:req.body.item_name,
-        unit:req.body.unit,
-        dimension:req.body.dimension,
-        weight:req.body.weight,
-        barcode:req.body.barcode,
-        quantity:req.body.quantity,
-        subject:req.body.subject,
-        refrigirator:req.body.refrigirator,
-        hazardious:req.body.hazardious,
-        cost:req.body.cost,
-        purchase_date:req.body.purchase_date,
-        expiry_date:req.body.expiry_date,
+        item_name: req.body.item_name,
+        unit: req.body.unit,
+        dimension: req.body.dimension,
+        weight: req.body.weight,
+        barcode: req.body.barcode,
+        quantity: req.body.quantity,
+        subject: req.body.subject,
+        refrigirator: req.body.refrigirator,
+        hazardious: req.body.hazardious,
+        cost: req.body.cost,
+        purchase_date: req.body.purchase_date,
+        expiry_date: req.body.expiry_date,
       },
       { new: true }
     );
@@ -249,11 +314,11 @@ app.put('/sports_items/:id', async (req, res) => {
         sports_name: req.body.sports_items,
         manufacturer: req.body.manufacturer,
         brand: req.body.brand,
-        barcode:req.body.barcode,
-        cost:req.body.cost,
-        vendor_name:req.body.vendor_name,
-        quantity:req.body.quantity,
-        purchase_date:req.body.purchase_date,
+        barcode: req.body.barcode,
+        cost: req.body.cost,
+        vendor_name: req.body.vendor_name,
+        quantity: req.body.quantity,
+        purchase_date: req.body.purchase_date,
       },
       { new: true }
     );
@@ -286,16 +351,16 @@ app.put('/canteen_items/:id', async (req, res) => {
     const updatedItem = await canteen_items.findByIdAndUpdate(
       req.params.id,
       {
-        item_name:req.body.item_name,
-        unit:req.body.unit,
-        quantity:req.body.quantity,
-        category:req.body.category,
-        refrigirator:req.body.refrigirator,
-        manufactur_date:req.body.manufactur_date,
-        expiry_date:req.body.expiry_date,
-        purchase_date:req.body.purchase_date,
-        purchase_price:req.body.purchase_price,
-        selling_price:req.body.selling_price,
+        item_name: req.body.item_name,
+        unit: req.body.unit,
+        quantity: req.body.quantity,
+        category: req.body.category,
+        refrigirator: req.body.refrigirator,
+        manufactur_date: req.body.manufactur_date,
+        expiry_date: req.body.expiry_date,
+        purchase_date: req.body.purchase_date,
+        purchase_price: req.body.purchase_price,
+        selling_price: req.body.selling_price,
       },
       { new: true }
     );
