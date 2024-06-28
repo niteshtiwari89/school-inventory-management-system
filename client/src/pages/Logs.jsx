@@ -34,7 +34,7 @@ export default function Logs() {
 
   const fetchProspectData = () => {
     axios
-      .get("http://localhost:5000/logs")
+      .get("https://school-inventory-management-system-server-tau.vercel.app/logs")
       .then((response) => {
         setSubmitnewData(response.data);
       })
