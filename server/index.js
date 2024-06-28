@@ -1,10 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const authRouter = require('./routes/authRoute');
+// const authRouter = require('./routes/authRoute');
 const app = express();
 const bodyParser = require('body-parser');
-
+const bcrypt = require ('bcryptjs');
+const jwt = require('jsonwebtoken');
+const createError = require('../utils/appError')
 const labs_items = require('./models/labs_items');
 const school_items = require("./models/school_items")
 const canteen_items = require("./models/canteen_items")
