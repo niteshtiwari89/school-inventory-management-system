@@ -4,7 +4,7 @@ const cors = require('cors');
 // const authRouter = require('./routes/authRoute');
 const app = express();
 const bodyParser = require('body-parser');
-const bcrypt = require ('bcryptjs');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const createError = require('../utils/appError')
 const labs_items = require('./models/labs_items');
@@ -91,7 +91,7 @@ app.post('/api/auth/login', async (req, res, next) => {
   } catch (error) {
     next(error)
   }
-};)
+})
 //3) MOngo Db Connection 
 mongoose
   .connect('mongodb+srv://school_inventory:school123@school.m5z4pna.mongodb.net/?retryWrites=true&w=majority&appName=school')
