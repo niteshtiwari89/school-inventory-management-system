@@ -21,8 +21,6 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import { useEffect } from "react";
-import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from "@mui/icons-material/Edit";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import "../css/logs.css";
 import More from "./More";

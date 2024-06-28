@@ -53,7 +53,7 @@ const Labs = () => {
 
   const fetchProspectData = () => {
     axios
-      .get("http://localhost:5000/labs_items")
+      .get("https://school-inventory-management-system-server-tau.vercel.app/labs_items")
       .then((response) => {
         setSubmitnewData(response.data);
       })
@@ -64,7 +64,7 @@ const Labs = () => {
 
   const handleSubmit = () => {
     axios
-      .post("http://localhost:5000/labs_items", data)
+      .post("https://school-inventory-management-system-server-tau.vercel.app/labs_items", data)
       .then(() => {
         setUpdateList(!updateList);
         handleClose();
@@ -76,7 +76,7 @@ const Labs = () => {
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:5000/labs_items/${id}`)
+      .delete(`https://school-inventory-management-system-server-tau.vercel.app/labs_items/${id}`)
       .then(() => {
         setUpdateList(!updateList);
       })
@@ -93,7 +93,7 @@ const Labs = () => {
 
   const handleSaveEdit = () => {
     axios
-      .put(`http://localhost:5000/labs_items/${editingData._id}`, data)
+      .put(`https://school-inventory-management-system-server-tau.vercel.app/labs_items/${editingData._id}`, data)
       .then(() => {
         setUpdateList(!updateList);
         handleClose();
@@ -182,14 +182,6 @@ const Labs = () => {
                 fontSize: '24px'
               }}
             >
-              {/* <AccountCircleIcon
-                sx={{
-                  fontSize: '2rem',
-                  fontWeight: 'bold',
-                  color: 'green',
-                  marginRight: '5px'
-                }}
-              />{' '} */}
               {editingData ? 'Edit Item' : 'Add Lab Item'}
             </Typography>
           </DialogTitle>

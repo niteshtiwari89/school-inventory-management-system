@@ -20,147 +20,28 @@ import {
   Typography,
 } from "@mui/material";
 import "../css/newcss.css";
-// import dayjs from 'dayjs';
-// import DatePicker from "react-datepicker";
-// import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-// import { DateField } from '@mui/x-date-pickers/DateField';
-// import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
-// import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-// import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import PageTitleWrapper from "../helloe/PageTitleWrapper";
 import AddTwoToneIcon from "@mui/icons-material/AddTwoTone";
-// import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import DeleteIcon from "@mui/icons-material/Delete";
 import axios from "axios";
 import EditIcon from "@mui/icons-material/Edit";
 // import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 const Sports = () => {
-  // const [open, setOpen] = useState(false);
-  // const [updateList, setUpdateList] = useState(false);
-  // const [submitnewData, setSubmitnewData] = useState([]);
-  // const [editingData, setEditingData] = useState(null);
-  // const [data, setData] = useState({
-  //   item_name: "",
-  //   sports_name: "",
-  //   manufacturer: "",
-  //   brand: "",
-  //   barcode: "",
-  //   cost: "",
-  //   vendor_name: "",
-  //   quantity: "",
-  //   purchase_date: "",
-  // });
-
-  // useEffect(() => {
-  //   fetchProspectData();
-  // }, [updateList]);
-
-  // const fetchProspectData = () => {
-  //   axios
-  //     .get("http://localhost:5000/sports_items")
-  //     .then((response) => {
-  //       setSubmitnewData(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching data: ", error);
-  //     });
-  // };
-
-  // const handleSubmit = () => {
-  //   // const formattedData = { ...data, purchase_date: data.purchase_date?.toDaten()};
-  //   axios
-  //     .post("http://localhost:5000/sports_items")
-  //     .then(() => {
-  //       setUpdateList(!updateList);
-  //       handleClose();
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error submitting data: ", error);
-  //     });
-  // };
-
-  // const handleDelete = (id) => {
-  //   axios
-  //     .delete(`http://localhost:5000/sports_items/${id}`)
-  //     .then(() => {
-  //       setUpdateList(!updateList);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error deleting data: ", error);
-  //     });
-  // };
-
-  // const handleEditTable = (data) => {
-  //   // setData({
-  //   //   ...data,
-  //   //   // purchase_date: data.purchase_date ? new Date(data.purchase_date) : null,
-  //   // });
-  //   setData(data);
-  //   setOpen(true);
-  //   setEditingData(data);
-  // };
-
-  // const handleSaveEdit = () => {
-
-  //   // const formattedData = { ...data, purchase_date: data.purchase_date?.toDate() };
-  //   axios
-  //     .put(`http://localhost:5000/sports_items/${editingData._id}`)
-  //     .then(() => {
-  //       setUpdateList(!updateList);
-  //       handleClose();
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error updating data: ", error);
-  //     });
-  // };
-
-  // const handleClose = () => {
-  //   setOpen(false);
-  // };
-
-  // const handleInputChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setData((prevData) => ({
-  //     ...prevData,
-  //     [name]: value,
-  //   }));
-  // };
-  // // const handleDateChange = (date) => {
-  // //   setData((prevData) => ({
-  // //     ...prevData,
-  // //     purchase_date: date,
-  // //   }));
-  // // };
-  // const handleClickOpen = () => {
-  //   setOpen(true);
-  //   setEditingData(null);
-  //   setData({
-  //     item_name: "",
-  //     sports_name: "",
-  //     manufacturer: "",
-  //     brand: "",
-  //     barcode: "",
-  //     cost: "",
-  //     vendor_name: "",
-  //     quantity: "",
-  //     purchase_date: "",
-  //   });
-  // };
   const [open, setOpen] = useState(false);
   const [updateList, setUpdateList] = useState(false);
   const [submitnewData, setSubmitnewData] = useState([]);
   const [editingData, setEditingData] = useState(null);
   const [data, setData] = useState({
     item_name: "",
-      sports_name: "",
-      manufacturer: "",
-      brand: "",
-      barcode: "",
-      cost: "",
-      vendor_name: "",
-      quantity: "",
-      purchase_date: "",
+    sports_name: "",
+    manufacturer: "",
+    brand: "",
+    barcode: "",
+    cost: "",
+    vendor_name: "",
+    quantity: "",
+    purchase_date: "",
   });
 
   useEffect(() => {
@@ -169,7 +50,9 @@ const Sports = () => {
 
   const fetchProspectData = () => {
     axios
-      .get("http://localhost:5000/sports_items")
+      .get(
+        "https://school-inventory-management-system-server-tau.vercel.app/sports_items"
+      )
       .then((response) => {
         setSubmitnewData(response.data);
       })
@@ -180,9 +63,12 @@ const Sports = () => {
 
   const handleSubmit = () => {
     axios
-      .post("http://localhost:5000/sports_items", data)
+      .post(
+        "https://school-inventory-management-system-server-tau.vercel.app/sports_items",
+        data
+      )
       .then(() => {
-        setUpdateList(!updateList); 
+        setUpdateList(!updateList);
         handleClose();
       })
       .catch((error) => {
@@ -192,7 +78,9 @@ const Sports = () => {
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:5000/sports_items/${id}`)
+      .delete(
+        `https://school-inventory-management-system-server-tau.vercel.app/sports_items/${id}`
+      )
       .then(() => {
         setUpdateList(!updateList);
       })
@@ -209,7 +97,10 @@ const Sports = () => {
 
   const handleSaveEdit = () => {
     axios
-      .put(`http://localhost:5000/sports_items/${editingData._id}`, data)
+      .put(
+        `https://school-inventory-management-system-server-tau.vercel.app/sports_items/${editingData._id}`,
+        data
+      )
       .then(() => {
         setUpdateList(!updateList);
         handleClose();
@@ -227,7 +118,7 @@ const Sports = () => {
     const { name, value } = e.target;
     setData((prevData) => ({
       ...prevData,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -236,14 +127,14 @@ const Sports = () => {
     setEditingData(null);
     setData({
       item_name: "",
-          sports_name: "",
-          manufacturer: "",
-          brand: "",
-          barcode: "",
-          cost: "",
-          vendor_name: "",
-          quantity: "",
-          purchase_date: "",
+      sports_name: "",
+      manufacturer: "",
+      brand: "",
+      barcode: "",
+      cost: "",
+      vendor_name: "",
+      quantity: "",
+      purchase_date: "",
     });
   };
 
@@ -408,26 +299,29 @@ const Sports = () => {
                     required
                   />
                 </Grid>{" "}
-                {editingData? "":<Grid item xs={12}>
-                  <TextField
-                    sx={{ marginTop: "1rem" }}
-                    id="quantity"
-                    name="quantity"
-                    label="Quantity"
-                    variant="outlined"
-                    value={data.quantity}
-                    onChange={handleInputChange}
-                    fullWidth
-                    required
-                  />
-                </Grid>}
+                {editingData ? (
+                  ""
+                ) : (
+                  <Grid item xs={12}>
+                    <TextField
+                      sx={{ marginTop: "1rem" }}
+                      id="quantity"
+                      name="quantity"
+                      label="Quantity"
+                      variant="outlined"
+                      value={data.quantity}
+                      onChange={handleInputChange}
+                      fullWidth
+                      required
+                    />
+                  </Grid>
+                )}
                 <Grid item xs={12}>
-                  <TextField 
+                  <TextField
                     sx={{ marginTop: "1rem" }}
                     id="purchase_date"
                     name="purchase_date"
                     label="Purchase Date"
-                    
                     // variant="outlined"
                     value={data.purchase_date}
                     onChange={handleInputChange}
@@ -435,7 +329,7 @@ const Sports = () => {
                     fullWidth
                     required
                   />
-                    {/* <DatePicker
+                  {/* <DatePicker
                    id="purchase_date"
                    name="purchase_date"
                    label="Purchase Date"
@@ -530,8 +424,8 @@ const Sports = () => {
                           </TableCell>
                           <TableCell align="center">{data.quantity}</TableCell>
                           <TableCell align="center">
-                          {/* {data.purchase_date} */}
-                          {data.purchase_date}
+                            {/* {data.purchase_date} */}
+                            {data.purchase_date}
                           </TableCell>
                           {/* <TableCell align="center">
                             {data.population}

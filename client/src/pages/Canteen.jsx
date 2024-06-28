@@ -51,7 +51,7 @@ const Canteen = () => {
 
   const fetchProspectData = () => {
     axios
-      .get("http://localhost:5000/canteen_items")
+      .get("https://school-inventory-management-system-server-tau.vercel.app/canteen_items")
       .then((response) => {
         setSubmitnewData(response.data);
       })
@@ -62,7 +62,7 @@ const Canteen = () => {
 
   const handleSubmit = () => {
     axios
-      .post("http://localhost:5000/canteen_items", data)
+      .post("https://school-inventory-management-system-server-tau.vercel.app/canteen_items", data)
       .then(() => {
         setUpdateList(!updateList); 
         handleClose();
@@ -74,7 +74,7 @@ const Canteen = () => {
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:5000/canteen_items/${id}`)
+      .delete(`https://school-inventory-management-system-server-tau.vercel.app/canteen_items/${id}`)
       .then(() => {
         setUpdateList(!updateList);
       })
@@ -91,7 +91,7 @@ const Canteen = () => {
 
   const handleSaveEdit = () => {
     axios
-      .put(`http://localhost:5000/canteen_items/${editingData._id}`, data)
+      .put(`https://school-inventory-management-system-server-tau.vercel.app/canteen_items/${editingData._id}`, data)
       .then(() => {
         setUpdateList(!updateList);
         handleClose();
